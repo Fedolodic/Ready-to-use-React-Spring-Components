@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ready-to-use-react-spring-components/static/css/main.87bf0230.chunk.css",
+    "main.js": "/ready-to-use-react-spring-components/static/js/main.9be9b305.chunk.js",
+    "main.js.map": "/ready-to-use-react-spring-components/static/js/main.9be9b305.chunk.js.map",
+    "runtime-main.js": "/ready-to-use-react-spring-components/static/js/runtime-main.cdc0ff31.js",
+    "runtime-main.js.map": "/ready-to-use-react-spring-components/static/js/runtime-main.cdc0ff31.js.map",
+    "static/js/2.f447d92b.chunk.js": "/ready-to-use-react-spring-components/static/js/2.f447d92b.chunk.js",
+    "static/js/2.f447d92b.chunk.js.map": "/ready-to-use-react-spring-components/static/js/2.f447d92b.chunk.js.map",
+    "index.html": "/ready-to-use-react-spring-components/index.html",
+    "precache-manifest.0a3b7c06f7c6f0bce8121cb9b5887d3e.js": "/ready-to-use-react-spring-components/precache-manifest.0a3b7c06f7c6f0bce8121cb9b5887d3e.js",
+    "service-worker.js": "/ready-to-use-react-spring-components/service-worker.js",
+    "static/css/main.87bf0230.chunk.css.map": "/ready-to-use-react-spring-components/static/css/main.87bf0230.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cdc0ff31.js",
+    "static/js/2.f447d92b.chunk.js",
+    "static/css/main.87bf0230.chunk.css",
+    "static/js/main.9be9b305.chunk.js"
+  ]
+}
