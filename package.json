@@ -1,0 +1,42 @@
+{
+  "name": "ready-to-use-react-spring-components",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://Fedolodic.github.io/ready-to-use-react-spring-components",
+  "dependencies": {
+    "lodash-es": "^4.17.15",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.2.0",
+    "react-spring": "9.0.0-beta.34",
+    "react-use-gesture": "^6.0.14",
+    "resize-observer-polyfill": "^1.5.1",
+    "styled-components": "^4.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}
