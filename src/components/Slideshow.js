@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React, {useRef} from 'react'
 import clamp from 'lodash-es/clamp'
-import { useSprings, animated } from 'react-spring'
-import { useDrag } from 'react-use-gesture'
+import {useSprings, animated} from 'react-spring'
+import {useDrag} from 'react-use-gesture'
 import '../slideshowstyles.css'
 
+// Image array
 const pages = [
     'https://images.pexels.com/photos/62689/pexels-photo-62689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     'https://images.pexels.com/photos/296878/pexels-photo-296878.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -13,33 +14,39 @@ const pages = [
 ];
 
 function Slideshow() {
-        const index = useRef(0);
+    const index = useRef(0);
 
-        const [props, set] = useSprings(pages.length, i => ({
-            x: i * window.innerWidth,
-            scale: 1,
-            display: 'block'
-        }));
+    // useSprings hook that sets (x, display, scale)
+    const [props, set] = useSprings(pages.length, i => ({
+        x: i * window.innerWidth,
+        scale: 1,
+        display: 'block'
+    }));
 
-        const bind = useDrag(({down, movement: [mx], direction: [xDir], distance, cancel}) => {
-            if (down && distance > window.innerWidth / 2)
-                cancel((index.current = clamp(index.current + (xDir > 0 ? -1 : 1), 0, pages.length - 1)));
+    const bind = useDrag(({down, movement: [mx], direction: [xDir], distance, cancel}) => {
+        // Set limit on drag distance
+        if (down && distance > window.innerWidth / 2)
+            cancel((index.current = clamp(index.current + (xDir > 0 ? -1 : 1), 0, pages.length - 1)));
 
-            set(i => {
-                if (i < index.current - 1 || i > index.current + 1) return {display: 'none'};
+        set(i => {
+            // If out of bounds
+            if (i < index.current - 1 || i > index.current + 1) return {display: 'none'};
 
-                const x = (i - index.current) * window.innerWidth + (down ? mx : 0);
+            // Set x to pages length
+            const x = (i - index.current) * window.innerWidth + (down ? mx : 0);
 
-                const scale = down ? 1 - distance / window.innerWidth / 2 : 1;
+            // Set scale based on down distance
+            const scale = down ? 1 - distance / window.innerWidth / 2 : 1;
 
-                return {x, scale, display: 'block'}
-            })
-        });
+            return {x, scale, display: 'block'}
+        })
+    });
 
-        return props.map(({x, display, scale}, i) => (
-            <animated.div {...bind()} key={i} style={{display, x}}>
-                <animated.div style={{scale, backgroundImage: `url(${pages[i]})`}}/>
-            </animated.div>
-        ))
+    return props.map(({x, display, scale}, i) => (
+        <animated.div {...bind()} key={i} style={{display, x}}>
+            <animated.div style={{scale, backgroundImage: `url(${pages[i]})`}}/>
+        </animated.div>
+    ))
 }
+
 export default Slideshow;
