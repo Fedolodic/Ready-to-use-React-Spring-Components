@@ -12,7 +12,7 @@ import styled from 'styled-components'
  */
 const Container = styled.header`
   background-color: #272838;
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: row;
   top: 0;
@@ -23,12 +23,11 @@ const Container = styled.header`
   justify-content: space-between;
 `
 
-const Title = styled.h1`
-  font-size: 1.2rem;
-  color: #e5ece9;
-`
+
 
 const Button = styled.button`
+  position: absolute;
+  z-index: 10;
   border: none;
   border-radius: 0.5rem;
   padding: .2rem 2rem .2rem 2rem 
@@ -38,10 +37,10 @@ const Button = styled.button`
 
 const Header = ({ remix }) => {
     return (
-        <Container>
-            <Title>Gallery</Title>
+
+
             <Button onClick={remix}>Remix</Button>
-        </Container>
+
     )
 }
 

@@ -4,7 +4,7 @@ import shuffle from 'lodash/shuffle'
 import useMeasure from '../hooks/useMeasure'
 import useMedia from '../hooks/useMedia'
 import data from '../data/data'
-import '../styles.css'
+import '../masonrygridstyles.css'
 import Header from '../components/header'
 
 function MasonryGrid() {
@@ -12,22 +12,23 @@ function MasonryGrid() {
         ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'],
         [5, 4, 3],
         2
-    )
-    const [bind, { width }] = useMeasure()
-    const [items, set] = useState(data)
-    const [reorder, setReorder] = useState(false)
+    );
 
-    useEffect(() => set(shuffle), [reorder])
+    const [bind, { width }] = useMeasure();
+    const [items, set] = useState(data);
+    const [reorder, setReorder] = useState(false);
 
-    let heights = new Array(columns).fill(0) // Each column gets a height starting with zero
+    useEffect(() => set(shuffle), [reorder]);
+
+    let heights = new Array(columns).fill(0); // Each column gets a height starting with zero
     let gridItems = items.map((child, i) => {
-        const column = heights.indexOf(Math.min(...heights)) // Basic masonry-grid placing, puts tile into the smallest column using Math.min
+        const column = heights.indexOf(Math.min(...heights)); // Basic masonry-grid placing, puts tile into the smallest column using Math.min
         const xy = [
             (width / columns) * column,
             (heights[column] += child.height / 2) - child.height / 2,
-        ] // X = container width / number of columns * column index, Y = it's just the height of the current column
+        ]; // X = container width / number of columns * column index, Y = it's just the height of the current column
         return { ...child, xy, width: width / columns, height: child.height / 2 }
-    })
+    });
 
     // This turns gridItems into transitions, any addition, removal or change will be animated
     const transitions = useTransition(gridItems, item => item.css, {
@@ -35,9 +36,9 @@ function MasonryGrid() {
         enter: ({ xy, width, height }) => ({ xy, width, height, opacity: 1 }),
         update: ({ xy, width, height }) => ({ xy, width, height }),
         leave: { height: 0, opacity: 0 },
-        config: { mass: 5, tension: 500, friction: 100 },
+        config: { mass: 25, tension: 300, friction: 100 },
         trail: 25,
-    })
+    });
 
     return (
         <React.Fragment>

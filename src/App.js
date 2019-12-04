@@ -5,9 +5,10 @@ import MasonryGrid from "./components/MasonryGrid";
 class App extends Component {
     render() {
         return (
-
+            <React.Fragment>
+                {/*<Slideshow/>*/}
                 <MasonryGrid/>
-
+            </React.Fragment>
         )
     }
 }
